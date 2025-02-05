@@ -1,4 +1,4 @@
-SELECT COUNT(*) num, artist, first_week
+SELECT COUNT(*) num, artist
 FROM
 (SELECT
 artist,song, MIN(date) as first_week
@@ -7,5 +7,5 @@ WHERE
 rank < 50
 group by
 artist, song) 
-GROUP BY artist, first_week
+GROUP BY artist
 HAVING count(*) = 1
