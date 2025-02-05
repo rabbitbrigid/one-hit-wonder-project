@@ -1,0 +1,11 @@
+SELECT COUNT(*) num, artist, first_week
+FROM
+(SELECT
+artist,song, MIN(date) as first_week
+FROM `custom-library-437701-k8.billboard_charts.charts` 
+WHERE
+rank < 50
+group by
+artist, song) 
+GROUP BY artist, first_week
+HAVING count(*) = 1
